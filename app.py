@@ -13,6 +13,6 @@ def miauu():
 
 
 
-@app.route("/ds")
-def wauuu():
-    return "<p>argentina!</p>"
+@app.route("/ds/<string:prep1>/<string:prep2>")
+def wauuu(prep1,prep2):
+    return f"{prep1} vs {prep2}"
