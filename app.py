@@ -1,4 +1,5 @@
 from flask import Flask, render_template, url_for
+import sqlite3
 
 app = Flask(__name__)
 
@@ -33,3 +34,15 @@ def otra():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+@app.route("/test-db")
+def testDB():
+   abrirConexion()
+   cursor = db.cursor()
+   cursor.execute("SELECT COUNT(*) AS cant FROM usuarios; ")
+   res = cursor.fetchone()
+   registros = res["cant"]
+   cerrarConexion()
+   return f"Hay {registros} registros en la tabla usuarios"
+
+
